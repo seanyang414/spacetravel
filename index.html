@@ -1,79 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>space travel 1</title>
+	<script src="jQuery 1.11.0.js"></script>	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans' rel='stylesheet' type='text/css'>
+	<style>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Spacetravel : ">
+	*{
+		font-family: 'Open Sans', sans-serif;
+		margin:0px;
+		padding: 0px;
+	}
+	a{
+		text-decoration: none;
+	}
+	#background{
+		 width:100%; 
+		 height: 1500px;
+		 background: black;
+		 position: fixed;
+		 left: 0;
+		 top: 0;
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+	}
+	#background img{
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+	}
+	#container{
+		width: 80%;
+		height: 700px;
+		margin:auto;
+		color:white;
+		/*background: gray;*/
+		position: relative;
+		opacity: 0.5;
+	}
+	header{
+		width: 100%;
+		height: 33px;
+		margin-top: 50px;
+		/*background: red;*/
+	}
+	header .nav_btn
+	{
+		width: 13%;
+		height: 100%;
+		margin-left: 10%;
+		border: 1px solid white;
+		text-align: center;
+		float: left;
+		line-height: 33px;
+		font-size: 1em;
 
-    <title>Spacetravel</title>
-  </head>
+		
+	}
+	header .nav_btn a{
+		color: white;
+		height: 100%;
+		width: 100%;
+		display: block;
+	}
+	header .nav_btn a:hover{
+		background: maroon;
+		opacity: 0.9;
+	}
+	</style>
+	<script>
+	$(function(){
+			
+		// $('img').css({'height':$(window).height()});	
+		// $(window).resize(function(){
+		// 		$('img').css({'height':$(window).height()});
+		// });
+		//background space travel
+		var index=0;
+		var time=20;
+		function spaceTravelGo(){
+			$('#background1').css({'transform':'scale(2)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
+			$('#background2').css({'transform':'scale(1.7)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
+			$('#earth').css({'transform':'scale(1.5)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
+			$('#background3').css({'transform':'scale(1.3)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});	
+			$('#background4').css({'transform':'scale(1.2)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
 
-  <body>
+			index=0;
+		}
+		function spaceTravelBack(){
+			$('#background1').css({'transform':'scale(1)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
+			$('#background2').css({'transform':'scale(1)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
+			$('#earth').css({'transform':'scale(1)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});
+			$('#background3').css({'transform':'scale(1)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});	
+			$('#background4').css({'transform':'scale(1)',
+				'transition': '-webkit-transform '+time+'s linear 0s'
+			});	
+			index=1;
+		}
+		//$('#earth').css('transform','scale(0.1)');
+		spaceTravelGo()
+		var timer = setInterval(function(){
+			if(index==0)
+			{
+				spaceTravelBack();
+			}else
+			{	
+				spaceTravelGo();
+			}
+			
+		},time*1000);
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/seanyang414/spacetravel">View on GitHub</a>
+		//mouse move space
+		var mouseSpeed = 20;//This is the denominator, the smaller it goes, the fasters stars move.
+		$(document).mousemove(function(ev) {
+			/* Act on the event */
+			$('#background img').each(function(index, el) {
+				if(true)//(index==0||index==1||index==4)
+				{
+					$(el).css({
+						'top':-(ev.pageY-700)/((index*1+1)*mouseSpeed),
+						'left':-(ev.pageX-700)/((index*1+1)*mouseSpeed)
+					});	
+				}				
+			});
+		});
+	})
 
-          <h1 id="project_title">Spacetravel</h1>
-          <h2 id="project_tagline"></h2>
+	
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/seanyang414/spacetravel/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/seanyang414/spacetravel/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Spacetravel maintained by <a href="https://github.com/seanyang414">seanyang414</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+	</script>
+</head>
+<body>
+	<div id='background'>
+		<img id='background1' style='z-index:5' src="1big stars.png" alt="aaa">
+		<img id='background2'  style='z-index:4' src="2middle stars.png" alt="aaa">
+		<img id='earth' style='z-index:3' src="earth.png" alt="aaa">
+		<img id='background3' style='z-index:2' src="3small stars.png" alt="aaa">
+		<img id='background4' style='z-index:1' src="4back stars.png" alt="aaa">	
+	</div>	
+	<div id='container'>
+		<header>
+			<div class="nav_btn"><a href="#">Earth</a></div>
+			<div class="nav_btn"><a href="#">Monn</a></div>
+			<div class="nav_btn"><a href="#">Mars</a></div>
+			<div class="nav_btn"><a href="#">Jupiter</a></div>	
+		</header>
+	</div>
+</body>
 </html>
