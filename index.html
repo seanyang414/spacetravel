@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>space travel 2</title>
+	<title>space travel 3</title>
 	<script src="./javascripts/jQuery 1.11.0.js"></script>	
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -81,6 +81,58 @@
 				}				
 			});
 		});
+	
+
+		///////////////button hover
+		$('.nav_btn').mousemove(function(){
+
+			
+			$(this).css({'background-color': 'white'});
+			if($(this).css('border-color'))
+			{
+				$(this).css({'background-color': $(this).css('border-color')});
+			}
+			$(this).children().css({'color':'black'});
+		});
+		$('.nav_btn').mouseout(function(){
+			$(this).css({'background-color':''});
+			$(this).children().css({'color':'white'});
+		});
+		var _this;
+		//////////////button click
+		$('.nav_btn').click(function(){
+			//alert($(this).index());
+			_this=$('.planet').eq($(this).index());
+			$('#Shadow').animate({
+					'opacity':'0',
+				},100);
+			$('.planet').animate({
+				'opacity':'0',
+			},400);
+			$('.planet').eq($(this).index()).animate({
+				'opacity':'1',
+			},200,function(){
+				$('#Shadow').animate({
+					'opacity':'1',
+				},500);
+			});
+			
+			
+			
+			return false;
+		});
+		$(document).click(function(){
+			$('#Shadow').animate({
+					'opacity':'0',
+				},300,function(){
+					_this.animate({
+						'opacity':'0',
+					},500);
+				});
+			
+		});
+
+		
 	})
 
 	
@@ -89,20 +141,28 @@
 </head>
 <body>
 	<div id='container'>
-		<header>
-			<div class="nav_btn"><a href="#">Earth</a></div>
-			<div class="nav_btn"><a href="#">Monn</a></div>
-			<div class="nav_btn"><a href="#">Mars</a></div>
-			<div class="nav_btn"><a href="#">Jupiter</a></div>	
+		<header>		
+			<div class="nav_btn" id='Earth'><a href="#">Earth</a></div>
+			<div class="nav_btn" id='Moon'><a href="#">Moon</a></div>
+			<div class="nav_btn" id='Mars'><a href="#">Mars</a></div>
+			<div class="nav_btn" id='Jupiter'><a href="#">Jupiter</a></div>	
 		</header>
+	</div>
+	<div id='planetBox'>
+		<img class='rotation planet' id='EarthP' style='z-index:1' src="./images/Earth.png" alt="aaa">
+		<img class='rotation planet' id='MoonP' style='z-index:1' src="./images/Moon.png" alt="aaa">
+		<img class='rotation planet' id='MarsP' style='z-index:1' src="./images/Mars.png" alt="aaa">
+		<img class='rotation planet' id='JupiterP' style='z-index:1' src="./images/Jupiter.png" alt="aaa">
+		<img class='rotation 'id='Shadow' style='z-index:1' src="./images/Shadow.png" alt="aaa">
 	</div>
 	<div id='background'>
 		<img id='background1' style='z-index:5' src="./images/1big stars.png" alt="aaa">
 		<img id='background2'  style='z-index:4' src="./images/2middle stars.png" alt="aaa">
-		<img id='earth' style='z-index:3' src="./images/earth.png" alt="aaa">
+		<img id='earth' style='z-index:3' src="./images/Galaxy.png" alt="aaa">
 		<img id='background3' style='z-index:2' src="./images/3small stars.png" alt="aaa">
 		<img id='background4' style='z-index:1' src="./images/4back stars.png" alt="aaa">	
 	</div>	
 
+	
 </body>
 </html>
