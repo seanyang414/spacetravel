@@ -12,20 +12,21 @@ header{
 		width: 100%;
 		height: 140px;
 		margin-top: 30px;
+		margin-left: 6%;
 		/*background: red;*/
 	}
 header .nav_btn
 {
-	width: 150px;
-	height: 150px;
-	border-radius: 80px;
+	width: 130px;
+	height: 130px;
+	border-radius: 55px;
 	margin-top: 60px;
 	margin-right: 0;
-	margin-left: 16%;
+	margin-left: 18%;
 	border: 5px solid white;
 	text-align: center;
 	float: left;
-	line-height: 150px;
+	line-height: 130px;
 	font-size: 1em;	
 }
 header .nav_btn a{
